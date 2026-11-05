@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Syne", ui-sans-serif, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, sans-serif;
+  --color-ink: #0b0914;
+  --color-panel: #161222;
+  --color-brand: #6e3ce8;
+  --color-brand-deep: #5426c4;
+  --color-azure: #3a78e0;
+  --color-aqua: #14c4d4;
+  --color-mist: #c9c3d8;
+  --color-paper: #f4f2fa;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #6e3ce8;
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid #14c4d4;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track {
+    animation: none !important;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 38s linear infinite;
+}
+
+@layer components {
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.9rem 1.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition:
+    background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-primary {
+  background: #6e3ce8;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #5426c4;
+}
+
+.btn-ghost {
+  border: 1px solid rgba(244, 242, 250, 0.22);
+  color: #f4f2fa;
+  background: transparent;
+}
+
+.btn-ghost:hover {
+  background: #6e3ce8;
+  border-color: #6e3ce8;
+}
+}
